@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - FileZen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/components/modal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="settings-container">
+        <div class="panel-header">
+            <h2 class="panel-title">系统设置</h2>
+            <a href="index.html" class="close-btn">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        
+        <div class="settings-group">
+            <div class="group-title">
+                <i class="fas fa-palette"></i>
+                <span>主题设置</span>
+            </div>
+            
+            <div class="setting-item">
+                <label class="setting-label">主色调</label>
+                <div class="color-picker">
+                    <div class="color-preview" id="colorPreview"></div>
+                    <input type="color" class="color-input" id="themeColor" value="#60a5fa">
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <label class="setting-label">背景设置</label>
+                <div class="bg-options">
+                    <div class="bg-option active" data-bg="light-gray"></div>
+                    <div class="bg-option" data-bg="light-blue"></div>
+                    <div class="bg-option" data-bg="light-green"></div>
+                    <div class="bg-option" data-bg="light-yellow"></div>
+                    <div class="bg-option" data-bg="light-pink"></div>
+                    <div class="bg-option" data-bg="light-purple"></div>
+                    <div class="bg-option" data-bg="gradient-purple"></div>
+                    <div class="bg-option" data-bg="gradient-blue"></div>
+                    <div class="bg-option" data-bg="gradient-orange"></div>
+                    <div class="bg-option" data-bg="gradient-green"></div>
+                    <div class="bg-option" data-bg="gradient-purple-blue"></div>
+                    <div class="bg-option" data-bg="gradient-sunset"></div>
+                    <div class="bg-option" data-bg="gradient-purple-blue-2"></div>
+                    <div class="bg-option" data-bg="gradient-green-2"></div>
+                    <div class="bg-option" data-bg="gradient-pink-red"></div>
+                    <div class="bg-option" data-bg="gradient-blue-purple"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-group">
+            <div class="group-title">
+                <i class="fas fa-layer-group"></i>
+                <span>布局设置</span>
+            </div>
+            
+            <div class="setting-item">
+                <label class="setting-label">默认布局</label>
+                <div class="flex gap-4 mt-2">
+                    <button class="bg-option w-1/2 h-14 flex items-center justify-center active" id="listLayout">
+                        <i class="fas fa-list mr-2"></i> 列表布局
+                    </button>
+                    <button class="bg-option w-1/2 h-14 flex items-center justify-center" id="gridLayout">
+                        <i class="fas fa-th-large mr-2"></i> 网格布局
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-group">
+            <div class="group-title">
+                <i class="fas fa-icons"></i>
+                <span>图标设置</span>
+            </div>
+            
+            <div class="setting-item">
+                <label class="setting-label">图标库选择</label>
+                <select class="w-full p-3 rounded-lg border bg-surface-light mt-2">
+                    <option>FontAwesome (默认)</option>
+                    <option>Material Icons</option>
+                    <option>Feather Icons</option>
+                    <option>自定义图标库</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="save-btn">
+            保存设置
+        </button>
+    </div>
+
+    <script>
+        // 设置页面的JavaScript代码
+        const themeColor = document.getElementById('themeColor');
+        const colorPreview = document.getElementById('colorPreview');
+        
+        // 主题颜色更改
+        themeColor.addEventListener('input', () => {
+            const color = themeColor.value;
+            colorPreview.style.background = color;
+            document.documentElement.style.setProperty('--primary', color);
+            
+            // 更新主色调的深色变体
+            const r = parseInt(color.substr(1, 2), 16);
+            const g = parseInt(color.substr(3, 2), 16);
+            const b = parseInt(color.substr(5, 2), 16);
+            const darkColor = `rgb(${Math.max(0, r - 40)}, ${Math.max(0, g - 40)}, ${Math.max(0, b - 40)})`;
+            document.documentElement.style.setProperty('--primary-dark', darkColor);
+        });
+        
+        // 背景选项点击
+        document.querySelectorAll('.bg-option').forEach(option => {
+            option.addEventListener('click', function() {
+                if (!this.dataset.bg) return;
+                
+                // 移除所有active类
+                document.querySelectorAll('.bg-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                // 添加active类到当前选项
+                this.classList.add('active');
+                
+                const bgType = this.getAttribute('data-bg');
+                let bgStyle = '';
+                
+                switch(bgType) {
+                    case 'light-gray':
+                        bgStyle = '#f5f7ff';
+                        break;
+                    case 'light-blue':
+                        bgStyle = '#e0f2ff';
+                        break;
+                    // ... 其他背景样式 ...
+                }
+                
+                document.body.style.background = bgStyle;
+            });
+        });
+    </script>
+</body>
+</html>

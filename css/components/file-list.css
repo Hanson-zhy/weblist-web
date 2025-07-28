@@ -1,0 +1,27 @@
+/* 列表布局 */
+.file-container.list-layout {
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+.file-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 120px 120px;
+  height: 50px;
+  border-radius: var(--border-radius);
+  background: var(--surface);
+}
+
+/* 网格布局 */
+.file-container.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.file-card {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition);
+}

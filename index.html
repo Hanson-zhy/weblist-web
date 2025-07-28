@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileZen - 智能文件管理系统</title>
+    <!-- 外部CSS文件 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/file-list.css">
+    <link rel="stylesheet" href="css/components/context-menu.css">
+    <link rel="stylesheet" href="css/components/modal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- 模式切换指示器 -->
+    <div class="mode-indicator" id="modeIndicator">
+        已切换到 <span id="modeText">日间</span> 模式
+    </div>
+    
+    <!-- 顶部导航栏 -->
+    <header class="header flex items-center justify-between px-6">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-cloud"></i>
+            </div>
+            <h1>FileZen</h1>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="搜索文件..." id="searchInput">
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <!-- 昼夜切换按钮 -->
+            <button class="action-btn" id="themeToggle">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+            
+            <!-- 设置按钮 -->
+            <a href="settings.html" class="action-btn">
+                <i class="fas fa-cog"></i>
+            </a>
+            
+            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-blue-500">
+                <i class="fas fa-user text-sm"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 操作工具栏 -->
+    <div class="toolbar">
+        <button class="toolbar-btn" id="uploadBtn">
+            <i class="fas fa-upload"></i>
+            <span>上传</span>
+        </button>
+        <button class="toolbar-btn" id="newFolderBtn">
+            <i class="fas fa-folder-plus"></i>
+            <span>新建文件夹</span>
+        </button>
+        <button class="toolbar-btn" id="deleteBtn">
+            <i class="fas fa-trash-alt"></i>
+            <span>删除</span>
+        </button>
+        <button class="toolbar-btn" id="shareBtn">
+            <i class="fas fa-share-alt"></i>
+            <span>分享</span>
+        </button>
+        
+        <div class="view-toggle">
+            <button class="view-btn active" data-layout="list" id="listViewBtn">
+                <i class="fas fa-list"></i>
+            </button>
+            <button class="view-btn" data-layout="grid" id="gridViewBtn">
+                <i class="fas fa-th-large"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 文件区域 - 列表布局 -->
+    <div class="file-container list-layout active" id="listContainer">
+        <div class="file-list" id="fileList">
+            <!-- 文件列表内容 -->
+        </div>
+    </div>
+
+    <!-- 文件区域 - 网格布局 -->
+    <div class="file-container grid-layout" id="gridContainer">
+        <!-- 网格布局内容 -->
+    </div>
+
+    <!-- 右下角浮动菜单 -->
+    <div class="floating-menu">
+        <button class="menu-button" id="floatingMenuBtn">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="menu-items">
+            <a href="#" class="menu-item">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>上传文件</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-sync-alt"></i>
+                <span>刷新列表</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-sort-amount-down"></i>
+                <span>排序方式</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-filter"></i>
+                <span>文件过滤</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-info-circle"></i>
+                <span>系统信息</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- 右键上下文菜单 -->
+    <div class="context-menu" id="contextMenu">
+        <!-- 右键菜单内容 -->
+    </div>
+    
+    <!-- 状态信息栏 -->
+    <div class="status-bar">
+        <span>文件总数: <span id="fileCount">6</span> | 已选: <span id="selectedCount">0</span></span>
+        <span class="status-selection">按 Ctrl 键可多选 | Delete 删除 | Ctrl+A 全选</span>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/file-management.js"></script>
+</body>
+</html>
