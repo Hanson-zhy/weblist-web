@@ -3,6 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>123网盘</title>
+    <link rel="stylesheet" href="frontend/css/main.css">
+    <link rel="stylesheet" href="frontend/css/themes.css">
+    <link rel="stylesheet" href="frontend/css/responsive.css">
+    <link rel="stylesheet" href="frontend/css/components/header.css">
+    <link rel="stylesheet" href="frontend/css/components/file-list.css">
+    <link rel="stylesheet" href="frontend/css/components/toolbar.css">
+    <link rel="stylesheet" href="frontend/css/components/modal.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 头部导航 -->
+        <header class="main-header">
+            <div class="logo">123网盘</div>
+            <div class="user-info">
+                <span class="username">游客</span>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="settings-btn" id="settingsBtn">⚙️</button>
+            </div>
+        </header>
+
+        <!-- 工具栏 -->
+        <div class="toolbar">
+            <button class="toolbar-btn" id="uploadBtn">📤 上传文件</button>
+            <button class="toolbar-btn" id="newFolderBtn">📁 新建文件夹</button>
+            <button class="toolbar-btn" id="refreshBtn">🔄 刷新</button>
+            <div class="view-controls">
+                <button class="view-btn active" data-view="list" id="listViewBtn">📄</button>
+                <button class="view-btn" data-view="grid" id="gridViewBtn">🔳</button>
+            </div>
+        </div>
+
+        <!-- 文件列表区域 -->
+        <main class="file-container">
+            <div class="file-path" id="filePath">/
+                <span class="path-separator">/</span>
+                <span class="current-path">我的文件</span>
+            </div>
+            <div class="file-list" id="fileList">
+                <!-- 文件列表项将通过JS动态生成 -->
+                <div class="file-item skeleton"></div>
+                <div class="file-item skeleton"></div>
+                <div class="file-item skeleton"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 模态窗口 -->
+    <div class="modal" id="operationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">新建文件夹</h3>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="folderName" placeholder="请输入文件夹名称">
+                <div class="error-message" id="modalError"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn cancel" id="cancelModal">取消</button>
+                <button class="modal-btn confirm" id="confirmModal">确认</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="frontend/js/app.js"></script>
+    <script src="frontend/js/fileOperations.js"></script>
+    <script src="frontend/js/themeManager.js"></script>
+=======
     <title>FileZen - 智能文件管理系统</title>
     <!-- 外部CSS文件 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -133,5 +203,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/file-management.js"></script>
+>>>>>>> 868efe5 (web)
 </body>
 </html>
